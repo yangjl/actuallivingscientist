@@ -35,7 +35,7 @@ loc_cleaning <- function(geocode_results){
         
     }
     
-    results_b <- lapply(geocode_results, as.data.frame)
+    #results_b <- lapply(geocode_results, as.data.frame)
     
     
     
@@ -43,8 +43,8 @@ loc_cleaning <- function(geocode_results){
     out <- data.frame()
     for(i in 1:length(geocode_results)){
         tem <- data.frame(address=geocode_results[[i]]$results[[1]]$formatted_address,
-                          lat=geocode_results[[i]]$results[[1]]$geometry$location$lat,
-                          lng=geocode_results[[i]]$results[[1]]$geometry$location$lng
+                          lat=geocode_results[[i]]$results[[1]]$geometry$location[['lat']],
+                          lng=geocode_results[[i]]$results[[1]]$geometry$location[['lng']]
                           )
         out <- rbind(tem, out)
     }
